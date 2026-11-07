@@ -7,6 +7,9 @@
 <style>
 :root{--bg:#101713;--panel:#19231d;--panel2:#202d25;--line:#304237;--text:#edf4ee;--muted:#9eafa2;--green:#a3d6a4;--accent:#c2edb5;--light:#e8eadc;--dark:#78977c}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 0%,#263b2c 0,transparent 42%),var(--bg);color:var(--text);font-family:'DM Sans',sans-serif}.wrap{max-width:1180px;margin:auto;padding:28px 22px 44px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}.brand{display:flex;gap:12px;align-items:center;font-weight:800;letter-spacing:.08em}.logo{width:42px;height:42px;border-radius:13px;background:var(--accent);color:#162319;display:grid;place-items:center;font-size:25px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.2em;margin-top:2px}.online{font-size:12px;color:var(--green);border:1px solid #42634a;background:#203428;padding:8px 12px;border-radius:30px}.online:before{content:'';display:inline-block;width:7px;height:7px;background:#8bd69a;border-radius:50%;margin-right:8px}.intro{margin:0 0 24px}.intro h1{font:800 clamp(28px,4vw,42px) 'Playfair Display',serif;margin:0 0 7px}.intro p{color:var(--muted);margin:0;font-size:14px}.layout{display:grid;grid-template-columns:minmax(300px, min(68vw,680px)) minmax(260px,1fr);gap:24px;align-items:start}.board-card{background:#1a241e;border:1px solid var(--line);border-radius:20px;padding:15px;box-shadow:0 22px 70px #0005}.player{display:flex;align-items:center;gap:11px;padding:5px 5px 13px}.player.bottom{padding:13px 5px 4px}.avatar{width:35px;height:35px;border-radius:11px;display:grid;place-items:center;background:#dce6d7;color:#26372a;font-size:20px}.player.black .avatar{background:#38473d;color:white}.player strong{font-size:13px;display:block}.player small{font-size:11px;color:var(--muted)}.turn{margin-left:auto;font-size:11px;color:var(--muted)}#board{width:100%;aspect-ratio:1;position:relative}.chessboard{width:100%!important;height:100%!important;aspect-ratio:1}.board-squares{width:100%!important;height:100%!important;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);overflow:hidden;border-radius:5px}.square{position:relative!important;width:auto!important;height:auto!important;aspect-ratio:1}.square.light{background:var(--light)!important}.square.dark{background:var(--dark)!important}.square img{width:100%!important;height:100%!important;object-fit:contain;position:absolute;inset:0;z-index:2}.square.selected-square{background:#e6d66c!important}.square.ui-droppable-active:after{content:'';position:absolute;width:27%;height:27%;border-radius:50%;background:#243b2b66;left:36.5%;top:36.5%;z-index:3;pointer-events:none}.square.ui-droppable-active:has(img):after{width:80%;height:80%;left:10%;top:10%;background:transparent;border:5px solid #243b2b66}.square.just-moved{background:#e5d878!important}.board-overlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4}.controls{display:flex;gap:9px;margin-top:15px}.btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:11px;padding:11px 13px;font:600 12px 'DM Sans';cursor:pointer;transition:.2s}.btn:hover{border-color:var(--green);background:#2a3b30}.btn.primary{background:var(--accent);color:#1b2a1e;border-color:var(--accent)}.btn.primary:hover{background:#d4f5c9}.side{display:grid;gap:15px}.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:18px}.card h2{font-size:14px;margin:0 0 14px}.status{display:flex;align-items:center;gap:10px;background:var(--panel2);border-radius:12px;padding:13px}.status-icon{font-size:20px}.status strong{font-size:13px;display:block}.status span{font-size:11px;color:var(--muted)}.moves{height:250px;overflow:auto}.move-row{display:grid;grid-template-columns:35px 1fr 1fr;padding:8px 7px;border-bottom:1px solid #2a382f;font-size:12px}.move-row:nth-child(odd){background:#202c24}.move-row .num{color:var(--muted)}.empty{color:var(--muted);font-size:12px;line-height:1.6}.hint{font-size:11px;color:var(--muted);line-height:1.6;margin:13px 2px 0}.footer{text-align:center;color:#728378;font-size:11px;margin-top:28px}.chessboard .square:after{pointer-events:none}.chessboard .square:before{pointer-events:none}
 @media(max-width:820px){.layout{grid-template-columns:1fr;max-width:650px;margin:auto}.side{grid-template-columns:1fr 1fr}.side .card:first-child{grid-column:1/-1}.moves{height:180px}}@media(max-width:520px){.wrap{padding:18px 12px 30px}.top{margin-bottom:23px}.online{font-size:10px}.board-card{padding:9px;border-radius:14px}.side{grid-template-columns:1fr}.side .card:first-child{grid-column:auto}.controls .btn{flex:1;padding:10px 5px;font-size:11px}}
+
+.analysis-card{grid-column:1/-1}.analysis-intro{color:var(--muted);font-size:12px;line-height:1.6;margin:0 0 12px}.analysis-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0}.analysis-stat{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:10px}.analysis-stat strong{display:block;font-size:19px;color:var(--accent)}.analysis-stat span{font-size:10px;color:var(--muted)}.review-tags{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}.review-tag{display:inline-flex;gap:5px;align-items:center;padding:6px 9px;background:var(--panel2);border:1px solid var(--line);border-radius:20px;font-size:11px}.analysis-list{display:grid;gap:7px;margin-top:12px}.analysis-row{display:grid;grid-template-columns:minmax(90px,auto) 1fr auto;gap:6px 10px;align-items:center;background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:10px}.analysis-label{font-size:11px;font-weight:800}.analysis-move{font-size:12px;font-weight:700}.analysis-eval{font-size:10px;color:var(--muted);text-align:right}.analysis-detail{grid-column:1/-1;font-size:11px;color:var(--muted);line-height:1.5}.analysis-empty{font-size:12px;color:var(--muted);line-height:1.6}.analysis-progress{height:7px;background:#344238;border-radius:99px;overflow:hidden;margin:10px 0}.analysis-progress>div{height:100%;width:0;background:var(--accent);transition:width .2s}.analysis-row.brilliant{border-color:#2d9b7b}.analysis-row.blunder{border-color:#b85b52}.analysis-row.mistake{border-color:#b77b45}@media(max-width:520px){.analysis-summary{grid-template-columns:repeat(3,minmax(0,1fr))}.analysis-stat{padding:8px}.analysis-stat strong{font-size:16px}.analysis-row{grid-template-columns:1fr auto}.analysis-label{grid-column:1/-1}.analysis-eval{grid-column:2;grid-row:2}}
+
 </style>
   <script src="https://unpkg.com/peerjs@1.5.5/dist/peerjs.min.js"></script>
 
@@ -29,10 +32,11 @@
 <div class="player black"><div class="avatar">♚</div><div><strong>Schwarz</strong><small>Spieler 2</small></div><div class="turn" id="blackTurn"></div></div>
 <div id="board"></div>
 <div class="player bottom"><div class="avatar">♔</div><div><strong>Weiß</strong><small>Spieler 1</small></div><div class="turn" id="whiteTurn">Am Zug</div></div>
-<div class="controls"><button class="btn primary" id="newGame">↻ Neue Partie</button><button class="btn" id="undo">↶ Zurück</button><button class="btn" id="flip">⇅ Brett drehen</button></div>
+<div class="controls"><button class="btn primary" id="newGame">↻ Neue Partie</button><button class="btn" id="undo">↶ Zurück</button><button class="btn" id="flip">⇅ Brett drehen</button><button class="btn" id="analyseGame">✦ Partie analysieren</button></div>
 </section>
 <aside class="side"><section class="card"><h2>PARTIE-STATUS</h2><div class="status"><div class="status-icon" id="statusIcon">♟</div><div><strong id="statusTitle">Weiß ist am Zug</strong><span id="statusSub">Die Partie hat begonnen</span></div></div><p class="hint">Tipp: Ziehe eine Figur auf ein Zielfeld oder klicke zuerst die Figur und dann das Zielfeld an.</p></section>
 <section class="card"><h2>ZUGVERLAUF</h2><div class="moves" id="moves"><p class="empty">Deine Züge erscheinen hier.</p></div></section>
+<section class="card analysis-card" id="analysisCard"><h2>PARTIE-ANALYSE</h2><p class="analysis-intro">Nach der Partie kannst du deine Züge mit Stockfish überprüfen lassen. Die Analyse läuft direkt in deinem Browser.</p><div id="analysisStatus" class="analysis-empty">Spiele zuerst ein paar Züge und klicke dann auf „Partie analysieren“.</div><div class="analysis-progress" id="analysisProgress" hidden><div id="analysisProgressBar"></div></div><div id="analysisSummary"></div><div id="analysisResults" class="analysis-list"></div></section>
 </aside></div><div class="footer">CHECKMATE · SCHACH FÜR ZWEI · Viel Spaß beim Spielen</div>
 </main>
 <script type="module">
@@ -104,10 +108,17 @@ function setupConnection(conn) {
   onlineStatus.textContent = 'Verbinde mit deinem Freund...';
   conn.on('open', () => {
     onlineStatus.textContent = 'Verbunden! Ihr könnt jetzt spielen.';
-    conn.send({fen: handler.game.fen()});
+    conn.send({pgn: handler.game.pgn()});
   });
   conn.on('data', data => {
-    if (data && data.fen) {
+    if (data && typeof data.pgn === 'string') {
+      handler.game.reset();
+      handler._sync();
+      if (data.pgn) handler.game.loadPgn(data.pgn);
+      handler._sync();
+      board.fen(handler.game.fen());
+      update();
+    } else if (data && data.fen) {
       handler.load(data.fen);
       board.fen(data.fen);
       update();
@@ -125,12 +136,238 @@ $('joinRoom').addEventListener('click', () => {
   if (!id) { onlineStatus.textContent = 'Bitte zuerst die Spieler-ID eingeben.'; return; }
   setupConnection(peer.connect(id));
 });
-board.on('usermove', () => {
-  if (connection && connection.open) connection.send({fen: handler.game.fen()});
-});
+function sendGameState() {
+  if (connection && connection.open) connection.send({pgn: handler.game.pgn()});
+}
+board.on('usermove', sendGameState);
 
-$('newGame').addEventListener('click',()=>{handler.game.reset();handler._sync();board.fen(handler.game.fen());update();});
-$('undo').addEventListener('click',()=>{if(handler.game.history().length){board.unmove();update();}});
+
+// Partie-Analyse mit Stockfish 19 Lite (läuft im Browser des Spielers).
+const analysisStatus = $('analysisStatus');
+const analysisSummary = $('analysisSummary');
+const analysisResults = $('analysisResults');
+const analysisProgress = $('analysisProgress');
+const analysisProgressBar = $('analysisProgressBar');
+const analyseButton = $('analyseGame');
+let stockfishWorker = null;
+let stockfishReadyPromise = null;
+let stockfishCurrentTask = null;
+
+function getStockfish() {
+  if (stockfishReadyPromise) return stockfishReadyPromise;
+  stockfishReadyPromise = new Promise((resolve, reject) => {
+    try {
+      stockfishWorker = new Worker('./stockfish-worker.js');
+    } catch (error) {
+      reject(new Error('Der Analyse-Worker konnte nicht gestartet werden. Bitte lade stockfish-worker.js in denselben GitHub-Ordner wie index.html hoch.'));
+      return;
+    }
+    let readyTimer = setTimeout(() => reject(new Error('Stockfish konnte nicht rechtzeitig geladen werden. Bitte Seite neu laden und erneut versuchen.')), 35000);
+    stockfishWorker.onmessage = event => {
+      const line = String(event.data || '');
+      if (line === 'uciok') stockfishWorker.postMessage('isready');
+      if (line === 'readyok') {
+        clearTimeout(readyTimer);
+        resolve(stockfishWorker);
+      }
+      if (stockfishCurrentTask) stockfishCurrentTask.onmessage(line);
+    };
+    stockfishWorker.onerror = () => {
+      clearTimeout(readyTimer);
+      reject(new Error('Stockfish konnte nicht geladen werden. Prüfe deine Internetverbindung und die Datei stockfish-worker.js.'));
+    };
+    stockfishWorker.postMessage('uci');
+  });
+  return stockfishReadyPromise;
+}
+
+async function evaluatePosition(fen) {
+  const worker = await getStockfish();
+  return new Promise((resolve, reject) => {
+    let latestScore = null;
+    const timer = setTimeout(() => {
+      stockfishCurrentTask = null;
+      reject(new Error('Die Engine hat für eine Stellung zu lange gebraucht. Bitte starte die Analyse erneut.'));
+    }, 30000);
+    stockfishCurrentTask = {
+      onmessage(line) {
+        const cpMatch = line.match(/\bscore cp (-?\d+)/);
+        const mateMatch = line.match(/\bscore mate (-?\d+)/);
+        if (cpMatch) latestScore = Number(cpMatch[1]);
+        if (mateMatch) {
+          const mate = Number(mateMatch[1]);
+          latestScore = mate > 0 ? 10000 - mate * 100 : -10000 - mate * 100;
+        }
+        const bestMatch = line.match(/^bestmove\s+(\S+)/);
+        if (bestMatch) {
+          clearTimeout(timer);
+          stockfishCurrentTask = null;
+          resolve({cp: latestScore === null ? 0 : latestScore, bestmove: bestMatch[1]});
+        }
+      }
+    };
+    worker.postMessage('position fen ' + fen);
+    worker.postMessage('go depth 10');
+  });
+}
+
+function uciToSan(fen, uci) {
+  if (!uci || uci === '(none)' || uci.length < 4) return '—';
+  try {
+    const temp = new Chess(fen);
+    const move = temp.move({from:uci.slice(0,2), to:uci.slice(2,4), promotion:uci[4]});
+    return move ? move.san : uci;
+  } catch (_) { return uci; }
+}
+function evaluationText(cp) {
+  if (cp >= 9900) return 'Matt für die Seite am Zug';
+  if (cp <= -9900) return 'Matt gegen die Seite am Zug';
+  const pawns = cp / 100;
+  return (pawns > 0 ? '+' : '') + pawns.toFixed(1);
+}
+function expectedPoints(cp) { return 1 / (1 + Math.exp(-cp / 400)); }
+function knownBookPrefix(uciMoves, currentIndex) {
+  const commonLines = [
+    'e2e4 e7e5 g1f3 b8c6 f1b5',
+    'e2e4 e7e5 g1f3 b8c6 f1c4',
+    'e2e4 c7c5 g1f3 d7d6 d2d4 c5d4',
+    'e2e4 c7c5 g1f3 b8c6 d2d4',
+    'e2e4 e7e6 d2d4 d7d5',
+    'e2e4 c7c6 d2d4 d7d5',
+    'd2d4 d7d5 c2c4 e7e6 b1c3',
+    'd2d4 g8f6 c2c4 e7e6 b1c3 f8b4',
+    'c2c4 e7e5 b1c3 g8f6 g2g3',
+    'g1f3 d7d5 d2d4 g8f6'
+  ];
+  if (currentIndex > 8) return false;
+  const prefix = uciMoves.slice(0, currentIndex + 1).join(' ');
+  return commonLines.some(line => line.startsWith(prefix));
+}
+function classifyMove(info) {
+  const loss = info.loss;
+  if (info.isBrilliant) return ['Brilliant', 'Starkes Figurenopfer, das die Engine weiterhin als sehr gut bewertet.'];
+  if (info.isGreat) return ['Great', 'Ein besonders wichtiger oder schwieriger Zug, der die Stellung rettet oder verbessert.'];
+  if (info.missedWin) return ['Miss', 'Hier wurde eine große Gewinnchance verpasst.'];
+  if (info.book && loss <= 15) return ['Book', 'Bekannter Zug aus einer häufig gespielten Eröffnung.'];
+  if (loss <= 10) return ['Best', 'Der Zug entspricht nahezu der besten Engine-Fortsetzung.'];
+  if (loss <= 30) return ['Excellent', 'Fast so gut wie der beste Zug.'];
+  if (loss <= 60) return ['Good', 'Ein guter Zug mit kleinem Genauigkeitsverlust.'];
+  if (loss <= 120) return ['Inaccuracy', 'Ein ungenauer Zug; eine bessere Fortsetzung war möglich.'];
+  if (loss <= 250) return ['Mistake', 'Ein Fehler, der die Stellung deutlich verschlechtert.'];
+  return ['Blunder', 'Ein schwerer Fehler, der oft Material oder die Partie kostet.'];
+}
+
+async function analyseGame() {
+  const verboseMoves = handler.game.history({verbose:true});
+  if (!verboseMoves.length) {
+    analysisStatus.textContent = 'Es gibt noch keine Züge zum Analysieren. Spiele zuerst eine Partie.';
+    return;
+  }
+  analyseButton.disabled = true;
+  analysisSummary.innerHTML = '';
+  analysisResults.innerHTML = '';
+  analysisProgress.hidden = false;
+  analysisProgressBar.style.width = '0%';
+  analysisStatus.textContent = 'Lade Stockfish. Beim ersten Start werden ungefähr 1,7 MB Engine-Dateien geladen.';
+  try {
+    const replay = new Chess();
+    const fens = [replay.fen()];
+    const moveSans = [];
+    const moveUcis = [];
+    const sideToMove = [];
+    for (const item of verboseMoves) {
+      sideToMove.push(replay.turn());
+      const moved = replay.move({from:item.from, to:item.to, promotion:item.promotion});
+      if (!moved) throw new Error('Die Zugliste konnte nicht vollständig nachgespielt werden.');
+      moveSans.push(moved.san);
+      moveUcis.push(item.from + item.to + (item.promotion || ''));
+      fens.push(replay.fen());
+    }
+    const evaluations = [];
+    for (let i = 0; i < fens.length; i++) {
+      analysisStatus.textContent = `Analysiere Stellung ${i + 1} von ${fens.length} …`;
+      analysisProgressBar.style.width = `${Math.round((i / fens.length) * 100)}%`;
+      evaluations.push(await evaluatePosition(fens[i]));
+    }
+    const rows = [];
+    const perSide = {w:[], b:[]};
+    const counts = {Brilliant:0,Great:0,Best:0,Excellent:0,Good:0,Book:0,Inaccuracy:0,Mistake:0,Miss:0,Blunder:0};
+    for (let i = 0; i < verboseMoves.length; i++) {
+      const move = verboseMoves[i];
+      const mover = sideToMove[i];
+      const before = evaluations[i].cp;
+      const after = -evaluations[i + 1].cp;
+      const loss = Math.max(0, before - after);
+      const reply = evaluations[i + 1].bestmove;
+      const replyFrom = reply && reply.length >= 4 ? reply.slice(0,2) : '';
+      const replyTo = reply && reply.length >= 4 ? reply.slice(2,4) : '';
+      const movedPiece = new Chess(fens[i]).get(move.from);
+      let opponentCapturesMover = false;
+      if (replyFrom === move.to) {
+        try {
+          const replyGame = new Chess(fens[i + 1]);
+          const replyMove = replyGame.move({from:replyFrom, to:replyTo, promotion:reply[4]});
+          opponentCapturesMover = !!replyMove && replyMove.captured !== undefined;
+        } catch (_) {}
+      }
+      const tempBefore = new Chess(fens[i]);
+      const legalCount = tempBefore.moves().length;
+      const isBrilliant = loss <= 12 && before < 350 && after > -120 && opponentCapturesMover && movedPiece && movedPiece.type !== 'p' && movedPiece.type !== 'k';
+      const isGreat = !isBrilliant && loss <= 12 && ((before < -120 && after > -35) || legalCount === 1);
+      const missedWin = !isBrilliant && !isGreat && before >= 150 && after < 45 && loss >= 70;
+      const info = {
+        loss, isBrilliant, isGreat, missedWin,
+        book: knownBookPrefix(moveUcis, i),
+        bestSan: uciToSan(fens[i], evaluations[i].bestmove),
+        before, after
+      };
+      const [label, explanation] = classifyMove(info);
+      info.label = label;
+      info.explanation = explanation;
+      info.san = moveSans[i];
+      info.mover = mover;
+      info.moveNumber = Math.floor(i / 2) + 1;
+      info.isWhite = mover === 'w';
+      info.book = info.book && label === 'Book';
+      counts[label] = (counts[label] || 0) + 1;
+      const pointLoss = Math.max(0, expectedPoints(before) - expectedPoints(after));
+      perSide[mover].push(pointLoss);
+      rows.push(info);
+    }
+    const accuracy = side => perSide[side].length ? Math.round(100 * (1 - perSide[side].reduce((a,b)=>a+b,0) / perSide[side].length)) : 100;
+    const tagNames = ['Brilliant','Great','Best','Excellent','Good','Book','Inaccuracy','Mistake','Miss','Blunder'];
+    analysisSummary.innerHTML = `
+      <div class="analysis-summary">
+        <div class="analysis-stat"><strong>${accuracy('w')}%</strong><span>Weiß · geschätzte Genauigkeit</span></div>
+        <div class="analysis-stat"><strong>${accuracy('b')}%</strong><span>Schwarz · geschätzte Genauigkeit</span></div>
+        <div class="analysis-stat"><strong>${verboseMoves.length}</strong><span>Analysierte Halbzüge</span></div>
+      </div>
+      <div class="review-tags">${tagNames.map(name=>`<span class="review-tag">${name}: <b>${counts[name] || 0}</b></span>`).join('')}</div>
+      <p class="analysis-intro">Die Prozentwerte und Kategorien sind eine eigene Engine-Schätzung. Sie können von Chess.com abweichen. „Book“ wird nur für einige bekannte Eröffnungszüge erkannt; „Brilliant“ und „Great“ nutzen vereinfachte Regeln.</p>`;
+    analysisResults.innerHTML = rows.map((row, i) => {
+      const color = row.isWhite ? 'Weiß' : 'Schwarz';
+      const klass = row.label.toLowerCase();
+      const sign = row.loss > 0 ? ` · Verlust etwa ${(row.loss / 100).toFixed(2)}` : '';
+      return `<div class="analysis-row ${klass}">
+        <div class="analysis-label">${row.label}</div>
+        <div class="analysis-move">${row.moveNumber}${row.isWhite ? '.' : '...'} ${color}: ${escapeHtml(row.san)}</div>
+        <div class="analysis-eval">${escapeHtml(evaluationText(row.before))} → ${escapeHtml(evaluationText(row.after))}</div>
+        <div class="analysis-detail">${escapeHtml(row.explanation)} Beste Fortsetzung: <b>${escapeHtml(row.bestSan)}</b>${escapeHtml(sign)}</div>
+      </div>`;
+    }).join('');
+    analysisProgressBar.style.width = '100%';
+    analysisStatus.textContent = 'Analyse fertig!';
+  } catch (error) {
+    analysisStatus.textContent = 'Analyse fehlgeschlagen: ' + (error && error.message ? error.message : 'Unbekannter Fehler');
+  } finally {
+    analyseButton.disabled = false;
+    analysisProgress.hidden = true;
+  }
+}
+analyseButton.addEventListener('click', analyseGame);
+
+$('newGame').addEventListener('click',()=>{handler.game.reset();handler._sync();board.fen(handler.game.fen());update();sendGameState();analysisSummary.innerHTML='';analysisResults.innerHTML='';analysisStatus.textContent='Neue Partie gestartet. Spiele zuerst ein paar Züge.';});
+$('undo').addEventListener('click',()=>{if(handler.game.history().length){board.unmove();update();sendGameState();}});
 $('flip').addEventListener('click',()=>board.flip());
 update();
 </script></body></html>
