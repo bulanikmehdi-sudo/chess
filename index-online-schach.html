@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Checkmate – Schach spielen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#101713;--panel:#19231d;--panel2:#202d25;--line:#304237;--text:#edf4ee;--muted:#9eafa2;--green:#a3d6a4;--accent:#c2edb5;--light:#e8eadc;--dark:#78977c}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 0%,#263b2c 0,transparent 42%),var(--bg);color:var(--text);font-family:'DM Sans',sans-serif}.wrap{max-width:1180px;margin:auto;padding:28px 22px 44px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}.brand{display:flex;gap:12px;align-items:center;font-weight:800;letter-spacing:.08em}.logo{width:42px;height:42px;border-radius:13px;background:var(--accent);color:#162319;display:grid;place-items:center;font-size:25px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.2em;margin-top:2px}.online{font-size:12px;color:var(--green);border:1px solid #42634a;background:#203428;padding:8px 12px;border-radius:30px}.online:before{content:'';display:inline-block;width:7px;height:7px;background:#8bd69a;border-radius:50%;margin-right:8px}.intro{margin:0 0 24px}.intro h1{font:800 clamp(28px,4vw,42px) 'Playfair Display',serif;margin:0 0 7px}.intro p{color:var(--muted);margin:0;font-size:14px}.layout{display:grid;grid-template-columns:minmax(300px, min(68vw,680px)) minmax(260px,1fr);gap:24px;align-items:start}.board-card{background:#1a241e;border:1px solid var(--line);border-radius:20px;padding:15px;box-shadow:0 22px 70px #0005}.player{display:flex;align-items:center;gap:11px;padding:5px 5px 13px}.player.bottom{padding:13px 5px 4px}.avatar{width:35px;height:35px;border-radius:11px;display:grid;place-items:center;background:#dce6d7;color:#26372a;font-size:20px}.player.black .avatar{background:#38473d;color:white}.player strong{font-size:13px;display:block}.player small{font-size:11px;color:var(--muted)}.turn{margin-left:auto;font-size:11px;color:var(--muted)}#board{width:100%;aspect-ratio:1;position:relative}.chessboard{width:100%!important;height:100%!important;aspect-ratio:1}.board-squares{width:100%!important;height:100%!important;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);overflow:hidden;border-radius:5px}.square{position:relative!important;width:auto!important;height:auto!important;aspect-ratio:1}.square.light{background:var(--light)!important}.square.dark{background:var(--dark)!important}.square img{width:100%!important;height:100%!important;object-fit:contain;position:absolute;inset:0;z-index:2}.square.selected-square{background:#e6d66c!important}.square.ui-droppable-active:after{content:'';position:absolute;width:27%;height:27%;border-radius:50%;background:#243b2b66;left:36.5%;top:36.5%;z-index:3;pointer-events:none}.square.ui-droppable-active:has(img):after{width:80%;height:80%;left:10%;top:10%;background:transparent;border:5px solid #243b2b66}.square.just-moved{background:#e5d878!important}.board-overlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4}.controls{display:flex;gap:9px;margin-top:15px}.btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:11px;padding:11px 13px;font:600 12px 'DM Sans';cursor:pointer;transition:.2s}.btn:hover{border-color:var(--green);background:#2a3b30}.btn.primary{background:var(--accent);color:#1b2a1e;border-color:var(--accent)}.btn.primary:hover{background:#d4f5c9}.side{display:grid;gap:15px}.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:18px}.card h2{font-size:14px;margin:0 0 14px}.status{display:flex;align-items:center;gap:10px;background:var(--panel2);border-radius:12px;padding:13px}.status-icon{font-size:20px}.status strong{font-size:13px;display:block}.status span{font-size:11px;color:var(--muted)}.moves{height:250px;overflow:auto}.move-row{display:grid;grid-template-columns:35px 1fr 1fr;padding:8px 7px;border-bottom:1px solid #2a382f;font-size:12px}.move-row:nth-child(odd){background:#202c24}.move-row .num{color:var(--muted)}.empty{color:var(--muted);font-size:12px;line-height:1.6}.hint{font-size:11px;color:var(--muted);line-height:1.6;margin:13px 2px 0}.footer{text-align:center;color:#728378;font-size:11px;margin-top:28px}.chessboard .square:after{pointer-events:none}.chessboard .square:before{pointer-events:none}
+@media(max-width:820px){.layout{grid-template-columns:1fr;max-width:650px;margin:auto}.side{grid-template-columns:1fr 1fr}.side .card:first-child{grid-column:1/-1}.moves{height:180px}}@media(max-width:520px){.wrap{padding:18px 12px 30px}.top{margin-bottom:23px}.online{font-size:10px}.board-card{padding:9px;border-radius:14px}.side{grid-template-columns:1fr}.side .card:first-child{grid-column:auto}.controls .btn{flex:1;padding:10px 5px;font-size:11px}}
+</style>
+  <script src="https://unpkg.com/peerjs@1.5.5/dist/peerjs.min.js"></script>
+
+</head>
+<body><main class="wrap">
+<div style="padding:15px;margin:0 0 18px;background:#eee;color:#111;border-radius:12px;">
+  <h3>Online-Schach Verbindung</h3>
+  <p id="status">Verbinde...</p>
+  <p><b>Deine Spieler-ID:</b></p>
+  <input id="myPeerId" readonly style="width:100%;padding:10px;margin-bottom:10px">
+  <button class="btn primary" id="createRoom">Spiel erstellen</button>
+  <hr style="margin:14px 0">
+  <label for="friendId"><b>Spieler-ID deines Freundes:</b></label>
+  <input id="friendId" placeholder="ID hier einfügen" style="width:100%;padding:10px;margin:8px 0">
+  <button class="btn" id="joinRoom">Spiel beitreten</button>
+</div>
+<header class="top"><div class="brand"><div class="logo">♞</div><div>CHECKMATE<small>YOUR CHESS CLUB</small></div></div><div class="online">SPIELBEREIT</div></header>
+<section class="intro"><h1>Dein nächster Zug.</h1><p>Eine Partie Schach. Zwei Spieler. Unendlich viele Möglichkeiten.</p></section>
+<div class="layout"><section class="board-card">
+<div class="player black"><div class="avatar">♚</div><div><strong>Schwarz</strong><small>Spieler 2</small></div><div class="turn" id="blackTurn"></div></div>
+<div id="board"></div>
+<div class="player bottom"><div class="avatar">♔</div><div><strong>Weiß</strong><small>Spieler 1</small></div><div class="turn" id="whiteTurn">Am Zug</div></div>
+<div class="controls"><button class="btn primary" id="newGame">↻ Neue Partie</button><button class="btn" id="undo">↶ Zurück</button><button class="btn" id="flip">⇅ Brett drehen</button></div>
+</section>
+<aside class="side"><section class="card"><h2>PARTIE-STATUS</h2><div class="status"><div class="status-icon" id="statusIcon">♟</div><div><strong id="statusTitle">Weiß ist am Zug</strong><span id="statusSub">Die Partie hat begonnen</span></div></div><p class="hint">Tipp: Ziehe eine Figur auf ein Zielfeld oder klicke zuerst die Figur und dann das Zielfeld an.</p></section>
+<section class="card"><h2>ZUGVERLAUF</h2><div class="moves" id="moves"><p class="empty">Deine Züge erscheinen hier.</p></div></section>
+</aside></div><div class="footer">CHECKMATE · SCHACH FÜR ZWEI · Viel Spaß beim Spielen</div>
+</main>
+<script type="module">
+import { Chess } from 'https://cdn.jsdelivr.net/npm/chess.js@1.4.0/+esm';
+import { Chessboard } from './chessboard.js';
+
+// Adapter: chessboard.js erwartet die ältere chess.js-API (u.a. inCheck und Castle-Flags).
+class ChessHandler {
+  constructor(){ this.game=new Chess(); this._currentFen=this.game.fen(); }
+  load(fen){ const ok=this.game.load(fen); this._sync(); return ok; }
+  _sync(){ this._currentFen=this.game.fen(); }
+  board(){ return this.game.board().map(row=>row.map(p=>p?{...p}:null)); }
+  moves(o={}){ return this.game.moves(o).map(m=>({...m, san:m.san, lan:m.lan})); }
+  decorate(m){if(!m)return null;const flags=m.flags||'';return Object.assign(m,{isKingsideCastle:()=>flags.includes('k'),isQueensideCastle:()=>flags.includes('q'),isEnPassant:()=>flags.includes('e'),isPromotion:()=>flags.includes('p')});}
+  move(o){ const m=this.game.move(o); if(!m)return null; this._sync(); return this.decorate(m); }
+  undo(){const m=this.game.undo();this._sync();return this.decorate(m);}
+  turn(){return this.game.turn();} get(s){return this.game.get(s);} inCheck(){return this.game.isCheck();}
+  history(o){const h=this.game.history(o);return o&&o.verbose?h.map(m=>this.decorate(m)):h;} pgn(){return this.game.pgn();} loadPgn(p){this.game.loadPgn(p);this._sync();return true;}
+  isCheckmate(){return this.game.isCheckmate();} isDraw(){return this.game.isDraw();} isStalemate(){return this.game.isStalemate();} isCheck(){return this.game.isCheck();} isGameOver(){return this.game.isGameOver();}
+}
+const handler=new ChessHandler();
+const board=new Chessboard('#board',{
+ theme:{boardLightSquareColor:'#e8eadc',boardDarkSquareColor:'#78977c'},
+ audioEnabled:false,showBoardLabels:true,pieceAnimationDuration:.14,
+ styling:{selectedSquareColor:'rgba(245,220,90,.35)',notationFontSize:'12px',notationFontWeight:'700'}
+},handler);
+const $=id=>document.getElementById(id);
+function update(){
+ const turn=handler.turn(), over=handler.isGameOver();
+ $('whiteTurn').textContent=turn==='w'&&!over?'Am Zug':'';
+ $('blackTurn').textContent=turn==='b'&&!over?'Am Zug':'';
+ let title=turn==='w'?'Weiß ist am Zug':'Schwarz ist am Zug', sub='Die Partie läuft', icon=turn==='w'?'♔':'♚';
+ if(handler.isCheckmate()){title='Schachmatt!';sub=(turn==='w'?'Schwarz':'Weiß')+' gewinnt';icon='🏆';}
+ else if(handler.isStalemate()){title='Patt';sub='Die Partie endet remis';icon='🤝';}
+ else if(handler.isDraw()){title='Remis';sub='Unentschieden';icon='🤝';}
+ else if(handler.isCheck()){title+=' · Schach!';sub='Der König steht im Schach';icon='⚠️';}
+ $('statusTitle').textContent=title;$('statusSub').textContent=sub;$('statusIcon').textContent=icon;
+ const hist=handler.history();const rows=[];
+ for(let i=0;i<hist.length;i+=2){rows.push(`<div class="move-row"><span class="num">${i/2+1}.</span><span>${escapeHtml(hist[i]||'')}</span><span>${escapeHtml(hist[i+1]||'')}</span></div>`)}
+ $('moves').innerHTML=rows.length?rows.join(''):'<p class="empty">Deine Züge erscheinen hier.</p>';
+ $('moves').scrollTop=$('moves').scrollHeight;
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+board.on('move',update);board.on('promotioncomplete',update);board.on('positionchange',update);
+// Online-Verbindung über PeerJS
+const peer = new Peer();
+let connection = null;
+const onlineStatus = $('status');
+peer.on('open', id => {
+  $('myPeerId').value = id;
+  onlineStatus.textContent = 'Du bist online! Erstelle ein Spiel oder tritt einem bei.';
+});
+peer.on('error', err => { onlineStatus.textContent = 'Verbindungsfehler: ' + err.type; });
+function setupConnection(conn) {
+  connection = conn;
+  onlineStatus.textContent = 'Verbinde mit deinem Freund...';
+  conn.on('open', () => {
+    onlineStatus.textContent = 'Verbunden! Ihr könnt jetzt spielen.';
+    conn.send({fen: handler.game.fen()});
+  });
+  conn.on('data', data => {
+    if (data && data.fen) {
+      handler.load(data.fen);
+      board.fen(data.fen);
+      update();
+    }
+  });
+  conn.on('close', () => { onlineStatus.textContent = 'Verbindung getrennt.'; connection = null; });
+}
+$('createRoom').addEventListener('click', () => {
+  if (!peer.open) { onlineStatus.textContent = 'Bitte kurz warten, Verbindung startet...'; return; }
+  onlineStatus.textContent = 'Spiel erstellt. Schicke deinem Freund deine Spieler-ID.';
+});
+peer.on('connection', conn => setupConnection(conn));
+$('joinRoom').addEventListener('click', () => {
+  const id = $('friendId').value.trim();
+  if (!id) { onlineStatus.textContent = 'Bitte zuerst die Spieler-ID eingeben.'; return; }
+  setupConnection(peer.connect(id));
+});
+board.on('usermove', () => {
+  if (connection && connection.open) connection.send({fen: handler.game.fen()});
+});
+
+$('newGame').addEventListener('click',()=>{handler.game.reset();handler._sync();board.fen(handler.game.fen());update();});
+$('undo').addEventListener('click',()=>{if(handler.game.history().length){board.unmove();update();}});
+$('flip').addEventListener('click',()=>board.flip());
+update();
+</script></body></html>
